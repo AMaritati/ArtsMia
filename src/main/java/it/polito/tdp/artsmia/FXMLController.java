@@ -5,8 +5,10 @@
 package it.polito.tdp.artsmia;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.artsmia.model.ArtObject;
 import it.polito.tdp.artsmia.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,11 +49,34 @@ public class FXMLController {
     
     @FXML
     void doAnalizzaOggetti(ActionEvent event) {
+    	model.creaGrafo();
+    	
+    	
+    	txtResult.setText(String.format("Nel grafo sono presenti %d vertici e %d archi\n\n", model.getNVertici(),model.getNArchi()));
 
     }
 
     @FXML
     void doCalcolaComponenteConnessa(ActionEvent event) {
+    	
+    	try {
+    		int id = Integer.parseInt(txtObjectId.getText());
+    		if(!model.getIdMap().containsKey(id)) {
+        		txtResult.setText("NON ESISTE ID NEL DB");
+        		return;
+        	
+    		}
+    		
+    		
+			
+    	
+			
+		} catch (NumberFormatException e) {
+			txtResult.setText("Inserire un numero");
+			return;
+		}   	
+    	
+    	
 
     }
 
